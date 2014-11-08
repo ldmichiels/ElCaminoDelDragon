@@ -1,0 +1,1 @@
+Esta carpeta quedará vacía hasta el final del proyecto cuando se suban las compilaciones.
