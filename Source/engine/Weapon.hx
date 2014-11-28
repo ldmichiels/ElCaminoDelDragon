@@ -26,7 +26,7 @@ class Weapon extends GameElement {
 		super();
 		this.scene = scene;
 		max_bullets = max;
-		time_btwn_shots = 1;
+		time_btwn_shots = 5;
 		bullets = new Array<Bullet>();
 
 		// Loading the weapon
@@ -35,9 +35,6 @@ class Weapon extends GameElement {
 
 			// Managing logic
 			bullets.push(blt);
-			// Managing visual
-			//scene.hijos.push(blt);
-			//scene.addChild(blt);
 		}
 
 		state = true;
@@ -45,12 +42,6 @@ class Weapon extends GameElement {
 
 	override public function updateLogic(time:Float) {
 		super.updateLogic(time);
-
-		/*
-		// Managing visual
-		for (hijo in hijos) {
-			hijo.updateLogic(time);
-		}*/
 
 		// Managing logic
 		for (blt in bullets) {
@@ -69,12 +60,6 @@ class Weapon extends GameElement {
 		this.addChild(this.explodeImage);
 		hijos.push(this.explodeImage);
 	}
-
-	/*
-	public setMaxBullets(max:Int){
-
-	}
-	*/
 
 	public function setTimeBtwnShots(t:Int) {
 		if (t > 0)

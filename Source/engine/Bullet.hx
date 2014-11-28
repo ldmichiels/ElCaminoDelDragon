@@ -63,7 +63,7 @@ class Bullet extends GameElement {
 					this.explodeImage.visible = true;
 
 				//@todo: hay q arreglar esta constante
-				if (this.explodeImage.getFrame() == 7) {
+				if (this.explodeImage.getFrame() == 3) {
 					this.explodeImage.visible = false;
 					this.setState(waiting);
 				}
@@ -93,15 +93,6 @@ class Bullet extends GameElement {
 		//this.setX(0);
 		//this.setY(0);
 	}
-/*
-	private function setVisible(v:Bool) {
-		this.visible = v;
-	}
-
-	public function isVisible() {
-		return this.visible;
-	}
-*/
 
 	public function isActive() {
 		if (this.state == 0) 
@@ -142,14 +133,10 @@ class Bullet extends GameElement {
 
 	public function setX(x:Float) {
 		this.x = x;
-		//this.image.x = x;
-		//this.explodeImage.x = x;
 	}
 
 	public function setY(y:Float) {
 		this.y = y;
-		//this.image.y = y;
-		//this.explodeImage.y = y;
 	}
 
 	public function getWay():String {

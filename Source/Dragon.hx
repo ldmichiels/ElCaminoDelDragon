@@ -28,19 +28,10 @@ class Dragon extends GameElement{
 		this.x = 50;
 		this.y = 300;
 
-		/*fuego = new Animation( Assets.getBitmapData("images/player_missile.png"), 7, 1);
-		this.addChild(fuego);
-		this.hijos.push(fuego);
-				
-		fuego.x = 54;
-		fuego.y = 24;
-		fuego.x = 54;
-		fuego.y = -11;*/
 		armas = WeaponManager.getInstance();
 		var fuego = new Weapon(this.scene, 10);
-		//fuego.setBulletImage(Assets.getBitmapData("images/player_missile.png"), 1, 6);
-		fuego.setBulletImage(Assets.getBitmapData("images/fuego.png"), 1, 4);
-		fuego.setBulletExplodeImage(Assets.getBitmapData("images/player_missile_explode.png"), 1, 8);
+		fuego.setBulletImage(Assets.getBitmapData("images/fuego_chico.png"), 1, 4);
+		fuego.setBulletExplodeImage(Assets.getBitmapData("images/fuego_explotando.png"), 1, 4);
 		armas.setWeapon('fuego', fuego);
 
 		inmunidad = 0;

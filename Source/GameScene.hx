@@ -48,6 +48,7 @@ class GameScene extends Scene {
 
 		enemigos = new Array<Enemigo>();
 		enemigosActivos = new Array<Enemigo>();
+		
 		//Cargo los enemigos
 		for(i in 0 ... MAX_ENEMIES) {
 			enemigos.push(new Enemigo(this));
@@ -61,7 +62,6 @@ class GameScene extends Scene {
 		hijos.push(mercurio);
 
 		enemyTimer = 0;
-		Bala.init(this);
 
 		addChild(backBtn);
 	}
