@@ -1,10 +1,11 @@
-package ;
+package engine;
 
 import flash.display.Sprite;
 
 class GameElement extends Sprite{
 	
 	var hijos:Array<GameElement>;
+	var colision:Int = 0;
 	
 	public function new () {
 		super();		
@@ -18,4 +19,11 @@ class GameElement extends Sprite{
 		}
 	}
 
+	public function getColision():Int {
+		return colision;
+	}
+
+	public function setColision(c:Int) {
+		this.colision = c;
+	}
 }
