@@ -14,7 +14,7 @@ class GameElement extends Sprite{
 	
 	public function updateLogic(time:Float){
 		var hijo:GameElement;
-		for(hijo in hijos){
+		for (hijo in hijos) {
 			hijo.updateLogic(time);
 		}
 	}

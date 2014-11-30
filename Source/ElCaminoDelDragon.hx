@@ -6,9 +6,7 @@ import flash.display.Bitmap;
 import openfl.Assets;
 import flash.media.Sound;
 import engine.*;
-/**
- * @author fbricker
- */
+
 class ElCaminoDelDragon extends SceneManager {
 
 	private static var instance:SceneManager = null;
