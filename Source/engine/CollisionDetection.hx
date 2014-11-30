@@ -17,12 +17,12 @@ class CollisionDetection {
 		this.colliders = new Array<GameElement>();
 	}
 
-	public function subscribe(obj:engine.GameElement) {
-		this.colliders.push(obj);
+	public function subscribe(obj:GameElement):Int {
+		return this.colliders.push(obj);
 	}
 
-	public function unsubscribe(obj:engine.GameElement) {
-		//this.colliders.delete(obj);
+	public function unsubscribe(obj:GameElement):Bool {
+		return this.colliders.remove(obj);
 	}
 
 	// Detecta si obj1 y obj2 colisionan por el metodo mas simple de todos.
