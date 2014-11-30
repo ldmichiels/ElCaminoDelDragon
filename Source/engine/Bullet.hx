@@ -20,7 +20,7 @@ class Bullet extends GameElement {
 
 	private var image:Animation = null;
 	private var explodeImage:Animation = null;
-	private var scene: GameScene;
+	private var scene:GameScene;
 
 	public function new(s:GameScene) {
 		super();
@@ -120,8 +120,12 @@ class Bullet extends GameElement {
 
 	private function setState(s:Int) {
 		switch (s) {
-			case 1: this.state = s;
-			case 2: this.state = s;
+			case 1: 
+				this.state = s;
+				CollisionDetection.getInstance().subscribe(this);
+			case 2: 
+				this.state = s;
+				CollisionDetection.getInstance().subscribe(this);
 			// Si el valor no es 1 o 2, se asume 0
 			default: this.state = waiting;
 		}
