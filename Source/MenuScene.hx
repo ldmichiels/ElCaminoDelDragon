@@ -21,8 +21,12 @@ class MenuScene extends Scene {
 
 	public function new() {
 		super();
-		jugar = new Boton(0xFF0000, play);
-		ayuda = new Boton(0x00FF00, help);
+		var w:Int = 200;
+		var h:Int = 50;
+		jugar = new Boton(0xFF0000, w, h, play);
+		jugar.setText("Jugar");
+		ayuda = new Boton(0x00FF00, w, h, help);
+		ayuda.setText("Ayuda");
 		this.addChild(jugar);
 		this.addChild(ayuda);
 
