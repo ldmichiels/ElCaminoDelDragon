@@ -36,5 +36,11 @@ class ElCaminoDelDragon extends SceneManager {
 		// Si buscamos 60 fps
 		this.updateLogic(1/60);
 	}
-		
+	
+	public function onResize(_) {
+		var s:Float = Math.min(stage.stageWidth / 800, stage.stageHeight / 600);
+		this.scaleX = this.scaleY = s;
+		this.x = (stage.stageWidth - 800 * s)/2;
+		this.y = (stage.stageHeight - 600 * s)/2;
+	}
 }
