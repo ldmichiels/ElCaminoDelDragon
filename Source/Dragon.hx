@@ -41,20 +41,22 @@ class Dragon extends GameElement{
 	override public function updateLogic(time:Float) {
 		
 		super.updateLogic(time);
+		var ancho:Int = ElCaminoDelDragon.getInstance().stage.stageWidth;
+		var alto:Int = ElCaminoDelDragon.getInstance().stage.stageHeight;
 		
-		if (InputManager.getInstance().keyPressed('W')) {
+		if (InputManager.getInstance().keyPressed('W') && y > -1) {
 			this.y--;
 		} else {}
 		
-		if (InputManager.getInstance().keyPressed('S')) {
+		if (InputManager.getInstance().keyPressed('S') && y + height < alto -1) {
 			this.y++;
 		} else {}
 
-		if (InputManager.getInstance().keyPressed('A')) {
+		if (InputManager.getInstance().keyPressed('A') && x > -1) {
 			this.x--;
 		} else {}
 		
-		if (InputManager.getInstance().keyPressed('D')) {
+		if (InputManager.getInstance().keyPressed('D') && x + width < ancho -1) {
 			this.x++;
 		} else {}
        	
