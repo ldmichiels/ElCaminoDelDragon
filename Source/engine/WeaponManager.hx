@@ -8,7 +8,7 @@ import openfl.Assets;
  * @author ldmichiels
  */
 class WeaponManager extends GameElement {
-
+	// @todo: weapons podria tener un struct dnd tmb se incluya el dueño
 	private var weapons:Map<String, Weapon>;
 	private static var instance:WeaponManager = null;
 
