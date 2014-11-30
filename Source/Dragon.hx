@@ -22,7 +22,7 @@ class Dragon extends GameElement{
 		//sound = Assets.getSound ("sound3");
 		//CollisionDetection.getInstance().subscribe(this);
 
-		volando = new Animation( Assets.getBitmapData("images/sprite_dragon_100x65.png"), 1, 4);
+		volando = new Animation( Assets.getBitmapData("images/sprite_dragon.png"), 1, 4);
 		this.addChild(volando);
 		this.hijos.push(volando);
 		this.x = 50;
@@ -71,12 +71,9 @@ class Dragon extends GameElement{
        		this.alpha = 0.5;
        	} else {
        		this.alpha = 1;
-       		
-       		for (enemigo in scene.enemigosActivos) {
-		       	if (CollisionDetection.detectarColision(this, enemigo)) {
-		       		inmunidad = 6;
-		       		//sound.play();
-		       	}	
+       		if (CollisionDetection.detectarColision2(this)) {
+       			inmunidad = 6;
+       			//sound.play();
        		}
        	}
 	}

@@ -87,7 +87,8 @@ class Weapon extends GameElement {
 		if (this.isActive()) {
 			var b:Bullet = this.getBullet();
 			if (b != null) {
-				b.setX(shooter.x + 90);
+				// @todo: Estas constantes deberian depender de quien dispara (estan puestas para Dragon ahi)
+				b.setX(shooter.x + 95);
 				b.setY(shooter.y + 25);
 				b.setWay(way);
 				b.activate();
