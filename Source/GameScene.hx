@@ -3,6 +3,8 @@ package;
 import flash.display.Sprite;
 import flash.Lib;
 import flash.display.Bitmap;
+import openfl.text.TextField;
+import openfl.text.TextFormat;
 import openfl.Assets;
 import flash.media.Sound;
 import engine.*;
@@ -31,10 +33,12 @@ class GameScene extends Scene {
 	// Boton para ir al menu
 	var backBtn:Boton;
 
+	private var ancho:Int;
+	private var alto:Int;
+	private var alto_menu:Int;
+
 	public function new () {
 		super();
-
-		backBtn = new Boton(0xFFFFFF, 200, 50, function(_){ElCaminoDelDragon.getInstance().setScene('menu');} );
 		
 		fondo1 = new FondoAnimado('images/mountain.png',10);
 		fondo2 = new FondoAnimado('images/tiny_mountains.png',70);
@@ -76,7 +80,10 @@ class GameScene extends Scene {
 		//EnemyManager.getInstance().turnOnEnemies('dragon_e');
 		//enemyTimer = 0;
 
-		addChild(backBtn);
+		alto_menu = 50;
+		ancho = ElCaminoDelDragon.getInstance().stage.stageWidth;
+		alto = ElCaminoDelDragon.getInstance().stage.stageHeight - alto_menu;
+		createMenu();
 	}
 
 	override public function updateLogic(time:Float) {
@@ -95,4 +102,37 @@ class GameScene extends Scene {
 		CollisionDetection.detectarColision3();
 	}
 
+	private function createMenu() {
+		this.graphics.beginFill(0x999999);
+		this.graphics.drawRect(0, 0, this.ancho, this.alto_menu);
+		this.graphics.endFill();
+
+		backBtn = new Boton(0xcc3333, 100, 50, function(_){ElCaminoDelDragon.getInstance().setScene('menu');} );
+		backBtn.setText("Menu");
+		addChild(backBtn);
+/*
+		tfield = new TextField();
+		tfield.selectable = false;
+		// Le restamos el 10% del ancho del boton para q el texto no quede en el borde
+		tfield.width = w - (0.1 * w);
+		tfield.height = h - (0.1 * h);
+
+		tformat = new TextFormat('Arial', 30, 0xFFFFFF);
+		tfield.setTextFormat(tformat);
+		tfield.defaultTextFormat = tformat;
+
+		this.addChild(tfield);*/
+	}
+
+	public function getAncho() {
+		return this.ancho;
+	}
+
+	public function getAlto() {
+		return this.alto;
+	}
+
+	public function getAltoMenu() {
+		return this.alto_menu;
+	}
 }

@@ -59,12 +59,14 @@ class Enemy extends GameElement {
 		this.image = new Animation(img, r, c);
 		this.addChild(this.image);
 		hijos.push(this.image);
+		this.image.visible = false;
 	}
 
 	public function setExplodeImage(eImg:BitmapData, r:Int, c:Int) {
 		this.explodeImage = new Animation(eImg, r, c);
 		this.addChild(this.explodeImage);
 		hijos.push(this.explodeImage);
+		this.explodeImage.visible = false;
 	}
 
 	public function die() {
@@ -87,7 +89,7 @@ class Enemy extends GameElement {
 		CollisionDetection.getInstance().subscribe(this);
 
 		this.x = 1000;
-		this.y = 50 + Std.random(500);
+		this.y = 50 + Std.random(400);
 	}
 
 	public function isActive():Bool {
