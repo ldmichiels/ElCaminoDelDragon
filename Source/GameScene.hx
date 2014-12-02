@@ -67,18 +67,28 @@ class GameScene extends Scene {
 		hijos.push(mercurio);
 
 		enemigos = EnemyManager.getInstance();
+
 		// Creamos algunos dragones enemigos
 		var arr_e = new Array<Enemy>();
 		for (i in 0...10) {
 			arr_e.push(new BadGreenDragon(this, 0));
 		}
 		enemigos.addEnemies('dragon_e', arr_e);
-		//this.addChild(enemigos);
-		//hijos.push(enemigos);
-		//dragon_enemigo = new BadGreenDragon(this, 5);
-		//EnemyManager.getInstance().createEnemies('dragon_e', dragon_enemigo, 2);
-		//EnemyManager.getInstance().turnOnEnemies('dragon_e');
-		//enemyTimer = 0;
+		
+		// Creamos lanzas
+		var arr_e = new Array<Enemy>();
+		for (i in 0...3) {
+			arr_e.push(new Lance(this, 0));
+		}
+		enemigos.addEnemies('lanza_e', arr_e);
+
+		// Creamos fuego
+		var arr_e = new Array<Enemy>();
+		for (i in 0...3) {
+			arr_e.push(new Fuego(this, 0));
+		}
+		enemigos.addEnemies('fuego_e', arr_e);
+
 
 		alto_menu = 50;
 		ancho = ElCaminoDelDragon.getInstance().stage.stageWidth;
