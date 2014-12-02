@@ -28,7 +28,7 @@ class CollisionDetection {
 	// Detecta si obj1 y obj2 colisionan por el metodo mas simple de todos.
     public static function detectarColision(obj1:GameElement, obj2:GameElement):Bool {
 		
-		if (obj1.x + obj1.width > obj2.x && obj1.x < obj2.x + obj2.width){
+		if (obj1 != obj2 && obj1.x + obj1.width > obj2.x && obj1.x < obj2.x + obj2.width){
 		   	if(obj1.y + obj1.height > obj2.y && obj1.y < obj2.y + obj2.height){
 		   		// Hay colision
 		   		return true;
@@ -41,7 +41,7 @@ class CollisionDetection {
     // Detecta si obj1 colisiona con algun elemento del arreglo colliders
     public static function detectarColision2(obj1:GameElement):Bool {
 		for (obj2 in CollisionDetection.getInstance().colliders) {
-			if (obj1.x + obj1.width > obj2.x && obj1.x < obj2.x + obj2.width){
+			if (obj1 != obj2 && obj1.x + obj1.width > obj2.x && obj1.x < obj2.x + obj2.width){
 			   	if(obj1.y + obj1.height > obj2.y && obj1.y < obj2.y + obj2.height){
 			   		// Hay colision
 			   		obj2.setColision(obj2.getColision()+1);

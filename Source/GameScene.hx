@@ -43,7 +43,7 @@ class GameScene extends Scene {
 		fondo1 = new FondoAnimado('images/mountain.png',10);
 		fondo2 = new FondoAnimado('images/tiny_mountains.png',70);
 		fondo3 = new FondoAnimado('images/muralla.png',150);
-		
+
 		addChild(fondo1);
 		addChild(fondo2);
 		addChild(fondo3);
@@ -73,8 +73,8 @@ class GameScene extends Scene {
 			arr_e.push(new BadGreenDragon(this, 0));
 		}
 		enemigos.addEnemies('dragon_e', arr_e);
-		this.addChild(enemigos);
-		hijos.push(enemigos);
+		//this.addChild(enemigos);
+		//hijos.push(enemigos);
 		//dragon_enemigo = new BadGreenDragon(this, 5);
 		//EnemyManager.getInstance().createEnemies('dragon_e', dragon_enemigo, 2);
 		//EnemyManager.getInstance().turnOnEnemies('dragon_e');
@@ -98,7 +98,7 @@ class GameScene extends Scene {
 				//enemigos.pop().atack();
 		//	EnemyManager.getInstance().turnOnEnemies('dragon_e');
 		//}
-		//EnemyManager.getInstance().updateLogic(time);
+		EnemyManager.getInstance().updateLogic(time);
 		CollisionDetection.detectarColision3();
 	}
 

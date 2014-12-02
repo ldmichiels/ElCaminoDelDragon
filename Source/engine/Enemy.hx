@@ -75,8 +75,12 @@ class Enemy extends GameElement {
 			this.image.visible = false;
 		if (this.explodeImage != null) 
 			this.explodeImage.visible = true;
-		this.colision = 0;
+
+		scene.hijos.remove(this);
+		scene.removeChild(this);
+
 		CollisionDetection.getInstance().unsubscribe(this);
+		this.colision = 0;
 	}
 
 	public function atack() {
@@ -85,6 +89,10 @@ class Enemy extends GameElement {
 			this.image.visible = true;
 		if (this.explodeImage != null) 
 			this.explodeImage.visible = false;
+
+		scene.hijos.push(this);
+		scene.addChild(this);
+
 		// Todo enemigo es colisionable
 		CollisionDetection.getInstance().subscribe(this);
 

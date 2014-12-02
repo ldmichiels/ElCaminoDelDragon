@@ -42,11 +42,11 @@ class Weapon extends GameElement {
 
 	override public function updateLogic(time:Float) {
 		super.updateLogic(time);
-
+		/*
 		// Managing logic
 		for (blt in bullets) {
 			blt.updateLogic(time);
-		}
+		}*/
 	}
 
 	public function setImage(img:BitmapData, r:Int, c:Int) {

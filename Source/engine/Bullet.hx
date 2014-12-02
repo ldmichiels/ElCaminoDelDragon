@@ -29,16 +29,18 @@ class Bullet extends GameElement {
 		scene.hijos.push(this);
 		scene.addChild(this);
 		
-		//this.visible = false;
+		this.visible = false;
 		this.state = waiting;
 		this.velocity = 80;
-		//this.x = 0;
-		//this.y = 0;
-		CollisionDetection.getInstance().subscribe(this);
+		
+		//CollisionDetection.getInstance().subscribe(this);
 	}
 
 	override public function updateLogic(time:Float) {
+		if(!visible)
+			return;
 		super.updateLogic(time);
+
 		if (way == 'left')
 			this.x -= velocity * time;
 		else
@@ -48,56 +50,73 @@ class Bullet extends GameElement {
 			case 1: 
 				// active
 				if (this.colision == 0) {
-					if (this.explodeImage != null)
-						this.explodeImage.visible = false;
-					if (this.image != null)
-						this.image.visible = true;
+					//activate();
 				} else {
-					this.state = exploiting;
+					explode();
 				}
 			case 2:
 				// exploiting
-				if (this.image != null)
-					this.image.visible = false;
-				if (this.explodeImage != null)
-					this.explodeImage.visible = true;
+				//explode();
 
 				//@todo: hay q arreglar esta constante
 				if (this.explodeImage.getFrame() == 3) {
-					this.explodeImage.visible = false;
-					this.setState(waiting);
+					disactivate();
 				}
 			default:
 				// waiting
-				this.image.visible = false;
-				this.explodeImage.visible = false;
-				this.colision = 0;
+				//disactivate();
 		}
 
-		if (this.x > 810)
+		if (this.x > 900)
 			this.disactivate();
 	}
 
 
 	public function explode() {
 		this.setState(exploiting);
+		
+		if (this.image != null)
+			this.image.visible = false;
+		if (this.explodeImage != null)
+			this.explodeImage.visible = true;
+
+		CollisionDetection.getInstance().unsubscribe(this);
 	}
 
 	public function activate() {
 		this.setState(active);
-		//this.setVisible(true);
+
+		if (this.image != null)
+			this.image.visible = true;
+		if (this.explodeImage != null)
+			this.explodeImage.visible = false;
+		
+		this.visible = true;
+
+		scene.hijos.push(this);
+		scene.addChild(this);
+		CollisionDetection.getInstance().subscribe(this);
 	}
 
 	public function disactivate() {
 		this.setState(waiting);
-		//this.setX(0);
-		//this.setY(0);
+
+		if (this.image != null)
+			this.image.visible = false;
+		if (this.explodeImage != null)
+			this.explodeImage.visible = false;
+		this.visible = false;
+
+		scene.hijos.remove(this);
+		scene.removeChild(this);
+		CollisionDetection.getInstance().unsubscribe(this);
+		this.colision = 0;
 	}
 
 	public function isActive() {
-		if (this.state == 0) 
-			return false;
-		return true;
+		if (this.state == active) 
+			return true;
+		return false;
 	}
 
 	/**
@@ -122,10 +141,8 @@ class Bullet extends GameElement {
 		switch (s) {
 			case 1: 
 				this.state = s;
-				CollisionDetection.getInstance().subscribe(this);
 			case 2: 
 				this.state = s;
-				CollisionDetection.getInstance().subscribe(this);
 			// Si el valor no es 1 o 2, se asume 0
 			default: this.state = waiting;
 		}
