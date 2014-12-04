@@ -11,9 +11,11 @@ class Dragon extends GameElement{
 	var armas:WeaponManager;
 
 	private var inmunidad:Float;
+	private var vida:Int;
 	private var sound:flash.media.Sound;
 	public var scene:GameScene;
 	public var shootTimer:Float;
+	private var state:Bool;
 	
 	public function new (scene:GameScene) {
 		
@@ -22,7 +24,7 @@ class Dragon extends GameElement{
 		//sound = Assets.getSound ("sound3");
 		//CollisionDetection.getInstance().subscribe(this);
 
-		volando = new Animation( Assets.getBitmapData("images/sprite_dragon.png"), 1, 4);
+		volando = new Animation( Assets.getBitmapData("images/dragon.png"), 1, 4);
 		this.addChild(volando);
 		this.hijos.push(volando);
 		this.x = 50;
@@ -35,7 +37,9 @@ class Dragon extends GameElement{
 		armas.setWeapon('fuego', fuego);
 
 		inmunidad = 0;
+		vida = 5;
 		shootTimer = 0;
+		state = true;
 	}	
 	
 	override public function updateLogic(time:Float) {
@@ -69,16 +73,26 @@ class Dragon extends GameElement{
 			armas.getWeapon('fuego').shoot(this,'right');
 		}
 
-       	if (inmunidad > 0) {
-       		inmunidad -= time;
-       		this.alpha = 0.5;
-       	} else {
-       		this.alpha = 1;
-       		if (CollisionDetection.detectarColision2(this)) {
-       			inmunidad = 6;
-       			//sound.play();
-       		}
-       	}
+		if (vida != 0) {
+	       	if (inmunidad > 0) {
+	       		inmunidad -= time;
+	       		this.alpha = 0.5;
+	       	} else {
+	       		this.alpha = 1;
+	       		if (CollisionDetection.detectarColision2(this)) {
+	       			inmunidad = 6;
+	       			vida--;
+	       			//sound.play();
+	       		}
+	       	}
+	       	} else {
+	       		this.visible = false;
+	       		this.state = false;
+	       	}
+	}
+
+	public function isAlive():Bool {
+		return state;
 	}
 
 }

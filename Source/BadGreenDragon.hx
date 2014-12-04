@@ -18,7 +18,7 @@ class BadGreenDragon extends Enemy {
 	public function new(scene:GameScene, max:Int) {
 		super(scene, max);
 
-		this.setImage(Assets.getBitmapData("images/sprite_dragon_enemigo.png"), 1, 4);
+		this.setImage(Assets.getBitmapData("images/dragon_enemigo.png"), 1, 4);
 		//this.setExplodeImage(Assets.getBitmapData("images/sprite_dragon_enemigo_100x65.png"), 1, 4);
 
 		/*

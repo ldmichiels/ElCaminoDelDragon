@@ -97,19 +97,22 @@ class GameScene extends Scene {
 	}
 
 	override public function updateLogic(time:Float) {
-		
-		super.updateLogic(time);
-		//enemyTimer -= time;
+		if (mercurio.isAlive()) {
+			super.updateLogic(time);
+			//enemyTimer -= time;
 
-		//if (enemyTimer < 0) {
-			// Valor entre 2 y 5 segundos
-		//	enemyTimer = Std.random(3) + 2;
-			//if (enemigos.length > 0)
-				//enemigos.pop().atack();
-		//	EnemyManager.getInstance().turnOnEnemies('dragon_e');
-		//}
-		EnemyManager.getInstance().updateLogic(time);
-		CollisionDetection.detectarColision3();
+			//if (enemyTimer < 0) {
+				// Valor entre 2 y 5 segundos
+			//	enemyTimer = Std.random(3) + 2;
+				//if (enemigos.length > 0)
+					//enemigos.pop().atack();
+			//	EnemyManager.getInstance().turnOnEnemies('dragon_e');
+			//}
+			EnemyManager.getInstance().updateLogic(time);
+			CollisionDetection.detectarColision3();
+			} else {
+				ElCaminoDelDragon.getInstance().setScene('menu');
+			}
 	}
 
 	private function createMenu() {
