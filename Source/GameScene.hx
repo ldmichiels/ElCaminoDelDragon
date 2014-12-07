@@ -27,6 +27,7 @@ class GameScene extends Scene {
 	private var fondo1:FondoAnimado;
 	private var fondo2:FondoAnimado;
 	private var fondo3:FondoAnimado;
+	private var fondo4:FondoAnimado;
 
 	//private var enemyTimer:Float;
 	
@@ -39,18 +40,26 @@ class GameScene extends Scene {
 
 	public function new () {
 		super();
-		
-		fondo1 = new FondoAnimado('images/mountain.png',10);
+		/*
+		fondo1 = new FondoAnimado('images/montania.png',10);
 		fondo2 = new FondoAnimado('images/tiny_mountains.png',70);
 		fondo3 = new FondoAnimado('images/muralla.png',150);
+		*/
+		fondo1 = new FondoAnimado('images/fondo1.png',10);
+		fondo2 = new FondoAnimado('images/fondo2.png',30);
+		fondo3 = new FondoAnimado('images/fondo3.png',80);
+		fondo4 = new FondoAnimado('images/fondo4.png',150);
+
 
 		addChild(fondo1);
 		addChild(fondo2);
 		addChild(fondo3);
+		addChild(fondo4);
 
 		hijos.push(fondo1);
 		hijos.push(fondo2);
 		hijos.push(fondo3);
+		hijos.push(fondo4);
 
 		//enemigos = new Array<Enemigo>();
 		//enemigosActivos = new Array<Enemigo>();
