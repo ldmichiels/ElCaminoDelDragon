@@ -36,20 +36,11 @@ class EnemyManager extends GameElement {
 		enemyTimer -= time;
 		if (enemyTimer < 0) {
 			// Valor entre 2 y 5 segundos
-			enemyTimer = Std.random(3) + 2;
+			//enemyTimer = Std.random(3) + 2;
+			enemyTimer = Std.random(1) + 0.5;
 
 			this.turnOnEnemies();
 		}
-		/*
-		// Para cada tipo de enemigo
-		for (key in enemies.keys()) {
-			var emy = enemies.get(key);
-			// Recorremos el arreglode enemigos de ete tipo
-			for (e in emy) {
-				if (e.isActive())
-					e.updateLogic(time);
-			}
-		}*/
 	}
 /*
 	public function createEnemies(name:String, enemy:Enemy, cant:Int) {
@@ -92,9 +83,9 @@ class EnemyManager extends GameElement {
 				
 				// Recorremos el arreglode enemigos de ete tipo
 				for (e in emy) {
-					//r = Std.random(100);trace(r);
-					//if (!e.isActive() && r < e.getProbability()) {
-					if (!e.isActive()){
+					r = Std.random(100);
+					if (!e.isActive() && r < e.getProbability()) {
+					//if (!e.isActive()){
 						e.atack();
 						this.activeEnemies.push(e);
 						return;

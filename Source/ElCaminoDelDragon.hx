@@ -29,6 +29,7 @@ class ElCaminoDelDragon extends SceneManager {
 
 		// Empezamos en la escena del menu
 		setScene('menu');
+		stage.addEventListener(openfl.events.Event.RESIZE, onResize);
 	}
 
 	// Nuestro gameLoop (se ejecuta antes de cada cuadro).

@@ -10,7 +10,9 @@ import engine.*;
 import motion.Actuate;
 import motion.MotionPath;
 import motion.easing.*;
-import openfl.utils.Timer; 
+import openfl.utils.Timer;
+import openfl.text.TextField;
+import openfl.text.TextFormat;
 
 class MenuScene extends Scene {
 
@@ -18,6 +20,7 @@ class MenuScene extends Scene {
 	var jugar:BotonAnimado;
 	var ayuda:Boton;
 	var fondo:Bitmap;
+	var puntaje:TextField;
 
 	private var t:flash.utils.Timer;
 
@@ -35,6 +38,19 @@ class MenuScene extends Scene {
 		t= new Timer(10, 2);
 		jugar = new BotonAnimado("images/PlayButton.png",158,30, w, h,3, play);
 		this.addChild(jugar);
+
+		puntaje = new TextField();
+		puntaje.selectable=false;
+		puntaje.width=300;
+		puntaje.height=100;
+
+		var tf = new TextFormat('Arial', 30, 0xFFFFFF);
+		puntaje.setTextFormat(tf);
+		puntaje.defaultTextFormat = tf;
+
+		//#if (ios || html5)
+		this.addChild(puntaje);
+		//#end
 
 /*
 		jugar = new Boton(0x760b38, w, h, play);
@@ -75,6 +91,8 @@ class MenuScene extends Scene {
 		//jugar.scaleX = jugar.scaleY = 0;
 		//motion.Actuate.tween(ayuda, 3, {scaleX:1, scaleY:1, alpha:1}).delay(0.3);
 		*/
+
+		puntaje.text = 'MAX SCORE: ' + Score.getInstance().getMaxScore();
 	}
 
 }

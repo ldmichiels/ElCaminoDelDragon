@@ -18,6 +18,9 @@ class Lance extends Enemy {
 		this.setImage(Assets.getBitmapData("images/lanza_sprite_380x22.png"), 1, 4);
 		//lanza.setBulletExplodeImage(Assets.getBitmapData("images/lanza_explotando.png"), 1, 4);
 		//armas.setWeapon('lanza_e', lanza);
+		this.setVelocity(150);
+		this.setProbability(20);
+		this.setDamage(20);
 	}
 /*
 	override public function updateLogic(time:Float) {

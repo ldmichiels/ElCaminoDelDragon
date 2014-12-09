@@ -20,7 +20,8 @@ class BadGreenDragon extends Enemy {
 
 		this.setImage(Assets.getBitmapData("images/dragon_enemigo.png"), 1, 4);
 		//this.setExplodeImage(Assets.getBitmapData("images/sprite_dragon_enemigo_100x65.png"), 1, 4);
-
+		this.setCredit(10);
+		this.setDamage(8);
 		/*
 		this.shootTimer = 0;
 		var fuego = new Weapon(this.scene, 10);

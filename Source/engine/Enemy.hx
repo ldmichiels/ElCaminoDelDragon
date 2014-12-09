@@ -11,8 +11,10 @@ class Enemy extends GameElement {
 
 	// Constants
 	private var probability:Int;
-
-	// @todo: Deberia usar hijos en lugar de deinir un nuevo arreglo
+	private var state:Bool;
+	private var velocity:Int;
+	private var credit:Int;
+	private var damage:Int;
 	
 	private var scene:GameScene;
 	private var image:Animation;
@@ -20,13 +22,12 @@ class Enemy extends GameElement {
 
 	private var armas:WeaponManager;
 
-	private var state:Bool;
-	private var velocity:Int;
-
 	public function new(scene:GameScene, max:Int) {
 		super();
 		this.scene = scene;
 		this.velocity = 50;
+		this.credit = 10;
+		this.damage = 10;
 		this.probability = 100;
 
 		this.scene.hijos.push(this);
@@ -41,7 +42,7 @@ class Enemy extends GameElement {
 		if (!isActive())
 			return;
 		super.updateLogic(time);
-		//this.x -= this.velocity * time;
+		this.x -= this.velocity * time;
 		this.x--;
 
 		if (this.colision == 0 && this.x > -100) {
@@ -51,6 +52,11 @@ class Enemy extends GameElement {
 			if (this.explodeImage != null) 
 				this.explodeImage.visible = false;
 		} else {
+			if (this.colision != 0) {
+				// Suma el pntaje por haber sido eliminado
+				Score.getInstance().setCurrentScore(Score.getInstance().getCurrentScore() + this.credit);
+				//Vida.getInstance().setVida(Vida.getInstance().getVida() - this.damage);
+			}
 			this.die();
 		}
 	}
@@ -120,4 +126,28 @@ class Enemy extends GameElement {
 		return this.probability;
 	}
 
+	public function setCredit(c:Int) {
+		this.credit = c;
+	}
+
+	public function getCredit() {
+		return this.credit;
+	}
+
+	public function setVelocity(v:Int) {
+		this.velocity = v;
+	}
+
+	public function getVelocity() {
+		return this.velocity;
+	}
+
+
+	public function setDamage(d:Int) {
+		this.damage = d;
+	}
+
+	public function getDamage() {
+		return this.damage;
+	}
 }

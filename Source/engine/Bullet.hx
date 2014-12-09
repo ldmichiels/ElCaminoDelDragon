@@ -33,7 +33,6 @@ class Bullet extends GameElement {
 		this.state = waiting;
 		this.velocity = 80;
 		
-		//CollisionDetection.getInstance().subscribe(this);
 	}
 
 	override public function updateLogic(time:Float) {
@@ -49,7 +48,8 @@ class Bullet extends GameElement {
 		switch (state) {
 			case 1: 
 				// active
-				if (this.colision == 0) {
+				//if (this.colision == 0) {
+				if (!CollisionDetection.detectarColision2(this)) {
 					//activate();
 				} else {
 					explode();
@@ -80,7 +80,7 @@ class Bullet extends GameElement {
 		if (this.explodeImage != null)
 			this.explodeImage.visible = true;
 
-		CollisionDetection.getInstance().unsubscribe(this);
+		//CollisionDetection.getInstance().unsubscribe(this);
 	}
 
 	public function activate() {
@@ -95,7 +95,7 @@ class Bullet extends GameElement {
 
 		scene.hijos.push(this);
 		scene.addChild(this);
-		CollisionDetection.getInstance().subscribe(this);
+		//CollisionDetection.getInstance().subscribe(this);
 	}
 
 	public function disactivate() {
@@ -109,7 +109,7 @@ class Bullet extends GameElement {
 
 		scene.hijos.remove(this);
 		scene.removeChild(this);
-		CollisionDetection.getInstance().unsubscribe(this);
+		//CollisionDetection.getInstance().unsubscribe(this);
 		this.colision = 0;
 	}
 

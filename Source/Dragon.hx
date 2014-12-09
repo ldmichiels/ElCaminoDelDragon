@@ -31,7 +31,7 @@ class Dragon extends GameElement{
 		this.y = 300;
 
 		armas = WeaponManager.getInstance();
-		var fuego = new Weapon(this.scene, 10);
+		var fuego = new Weapon(this.scene, 5);
 		fuego.setBulletImage(Assets.getBitmapData("images/fuego_chico.png"), 1, 4);
 		fuego.setBulletExplodeImage(Assets.getBitmapData("images/fuego_explotando.png"), 1, 4);
 		armas.setWeapon('fuego', fuego);
@@ -53,7 +53,7 @@ class Dragon extends GameElement{
 			this.y--;
 		} else {}
 		
-		if (InputManager.getInstance().keyPressed('S') && y + height < alto + alto_menu -1) {
+		if (InputManager.getInstance().keyPressed('S') && y + height < alto + alto_menu - 50 -1) {
 			this.y++;
 		} else {}
 
@@ -73,22 +73,24 @@ class Dragon extends GameElement{
 			armas.getWeapon('fuego').shoot(this,'right');
 		}
 
-		if (vida != 0) {
+		//if (vida != 0) {
+		if (Vida.getInstance().getVida() > 0) {
 	       	if (inmunidad > 0) {
 	       		inmunidad -= time;
 	       		this.alpha = 0.5;
 	       	} else {
 	       		this.alpha = 1;
 	       		if (CollisionDetection.detectarColision2(this)) {
-	       			inmunidad = 6;
-	       			vida--;
+	       			inmunidad = 3;
+	       			Vida.getInstance().setVida(Vida.getInstance().getVida() - cast(CollisionDetection.getInstance().getLastCol(), Enemy).getDamage());
+	       			//vida--;
 	       			//sound.play();
 	       		}
 	       	}
-	       	} else {
-	       		this.visible = false;
-	       		this.state = false;
-	       	}
+	    } else {
+       		this.visible = false;
+       		this.state = false;
+       	}
 	}
 
 	public function isAlive():Bool {
