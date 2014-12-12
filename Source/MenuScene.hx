@@ -21,6 +21,7 @@ class MenuScene extends Scene {
 	var ayuda:Boton;
 	var fondo:Bitmap;
 	var puntaje:TextField;
+	var upuntaje:TextField;
 
 	private var t:flash.utils.Timer;
 
@@ -48,8 +49,18 @@ class MenuScene extends Scene {
 		puntaje.setTextFormat(tf);
 		puntaje.defaultTextFormat = tf;
 
+		upuntaje = new TextField();
+		upuntaje.selectable=false;
+		upuntaje.width=300;
+		upuntaje.height=100;
+
+		var utf = new TextFormat('Arial', 20, 0xFFFFFF);
+		upuntaje.setTextFormat(utf);
+		upuntaje.defaultTextFormat = utf;
+
 		//#if (ios || html5)
 		this.addChild(puntaje);
+		this.addChild(upuntaje);
 		//#end
 
 /*
@@ -62,6 +73,11 @@ class MenuScene extends Scene {
 */
 		jugar.x = 600;
 		jugar.y = 400;
+
+		puntaje.x = 450;
+		puntaje.y = 520;
+		upuntaje.x = 450;
+		upuntaje.y = 570;
 /*
 		ayuda.x = 600;
 		ayuda.y = 500;
@@ -92,7 +108,8 @@ class MenuScene extends Scene {
 		//motion.Actuate.tween(ayuda, 3, {scaleX:1, scaleY:1, alpha:1}).delay(0.3);
 		*/
 
-		puntaje.text = 'MAX SCORE: ' + Score.getInstance().getMaxScore();
+		puntaje.text = 'Puntaje Maximo: ' + Score.getInstance().getMaxScore();
+		upuntaje.text = "Ultimo Puntaje: " + Score.getInstance().getCurrentScore();
 	}
 
 }

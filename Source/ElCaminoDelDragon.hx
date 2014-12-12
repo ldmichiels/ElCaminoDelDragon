@@ -10,6 +10,9 @@ import engine.*;
 class ElCaminoDelDragon extends SceneManager {
 
 	private static var instance:SceneManager = null;
+	private var game:GameScene;
+	private var rapidgame:GameSceneVeloz;
+	private var menu:MenuScene;
 	
 	public static function getInstance():SceneManager{
 		return instance;
@@ -22,9 +25,13 @@ class ElCaminoDelDragon extends SceneManager {
 		// En cada frame vamos a ejecutar la function gameLoop
 		stage.addEventListener(flash.events.Event.ENTER_FRAME, gameLoop);
 		InputManager.getInstance().suscribe(stage);
+		game = new GameScene();
+		//rapidgame =  new GameSceneVeloz();
+		menu = new MenuScene();
 
-		sceneMap.set('game', new GameScene());
-		sceneMap.set('menu', new MenuScene());
+		sceneMap.set('game', game);
+		//sceneMap.set('rapidgame', rapidgame);
+		sceneMap.set('menu', menu);
 		//sceneMap.set('ayuda',new HelpScene());
 
 		// Empezamos en la escena del menu
